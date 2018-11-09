@@ -30,17 +30,20 @@ function setup() {
   button.mousePressed(toggleVid); // attach button listener
 }
 
+function draw() {
+  toggleVid(); 
+}
+
 // plays or pauses the video depending on current state
 function toggleVid() {
-  if (playing) {
+  if (yAngle>90) {
     junglevid.pause();
-    button.html('play');
-  } else {
-    junglevid.loop();
-    button.html('pause');
+  } else { (yAngle<25) 
+    junglevid.loop();;
   }
   playing = !playing;
 }
+
 
 function dataReceived()   //this function is called every time data is received
 {
