@@ -8,12 +8,23 @@
 
 var serial;       //variable to hold the serial port object
 
-var serialPortName = "/dev/cu.usbmodem1411";  //FOR PC it will be COMX on mac it will be something like "/dev/cu.usbmodemXXXX"
+var serialPortName = "/dev/cu.usbmodem1411";  //FOR mac it will be something like "/dev/cu.usbmodemXXXX"
                               //Look at P5 Serial to see the available ports
 
-var xAngle;                   //these variables hold the incoming orientation values
+//var xAngle;                   //these variables hold the incoming orientation values
 var yAngle;      
-var zAngle;
+//var zAngle;
+var jungleVid;
+var vid;
+function setup() {
+  createCanvas(0, 0);
+  jungleVid = createVideo("assets/grow-you-a-jungle.mp4");
+  jungleVid.loop()
+}
+
+function preload () {
+  video = createVideo("assets/grow-you-a-jungle.mp4")
+}
 
 function setup() 
 {
@@ -27,32 +38,18 @@ function setup()
   serial.on('data',dataReceived);   //when data is received execute the dataReceived function
 
   // specify multiple formats for different browsers
-  fingers = createVideo(['grow-you-a-jungle.mp4',
+  fingers = createVideo(['assets/grow-you-a-jungle.mp4',
                          'assets/fingers.webm']);
   button = createButton('play');
   button.mousePressed(toggleVid); // attach button listener
 }
 
 function draw() {
-  background(map(xAngle,0,365,0,255),map(yAngle,0,365,0,255),map(zAngle,0,365,0,255));
+  background(map(yAngle,0,365,0,255));
   stroke(0);
   strokeWeight(2);
   
 ////this draws the dials with the orientation sensor values
-  push();
-  translate(width/4,height/2);
-  fill(255);
-  ellipse(0,0,200,200);
-  textSize(30);
-  textAlign(CENTER,CENTER);
-  fill(0);
-  text('X',0,0);
-  text(''+xAngle,0,130);
-  rotate(-xAngle);
-  line(0,0,100,0);
-  fill(0);
-  ellipse(100,0,10,10);
-  pop();
 
   push();
   translate(width/2,height/2);
@@ -69,24 +66,7 @@ function draw() {
   ellipse(100,0,10,10);
   pop();
 
-  push();
-  translate(width/2+width/4,height/2);
-  fill(255);
-  ellipse(0,0,200,200);
-  textSize(30);
-  textAlign(CENTER,CENTER);
-  fill(0);
-  text('Z',0,0);
-  text(''+zAngle,0,130);
-  rotate(-zAngle);
-  line(0,0,100,0);
-  fill(0);
-  ellipse(100,0,10,10);
-  pop();
-
-
-  
-  
+ 
 }
 
 
