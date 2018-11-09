@@ -49,10 +49,9 @@ function dataReceived()   //this function is called every time data is received
     console.log(rawData);                       //uncomment this line to see the incoming string in the console     
     if(rawData.length>1)                          //check that there is something in the string
     {                                               
-    
       yAngle = JSON.parse(rawData).oY;            //the name of parameter must match the one created in Arduino
       yAngle = (yAngle<0) ? yAngle+365 : yAngle;  //check to see if the value is below 0 if so add 365 to keep all the values positive 
-      
+        
     }
 }
 

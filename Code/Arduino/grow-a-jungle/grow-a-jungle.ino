@@ -34,10 +34,7 @@ unsigned long lastRead;   //used for the sampleRate timer
 int sampleRate = 100;     //the sampleRate for reading the sensor.  Without this it will crash.
 
 
-float xOrientation;     //holds the X orientation    Degrees
 float yOrientation;     //holds the Y orientation    Degrees
-float zOrientation;      //holds the Z orientation   Degrees
-
 
 
 void setup() 
